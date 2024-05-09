@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Embedded Voiceflow Chatbot</title>
+    <style>
+        #flat-chat {
+            width: 100%; /* Adjust the width as needed */
+            height: 600px; /* Adjust the height as needed */
+            border: 1px solid #ccc; /* Optional: Adds a border around the chatbot */
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '663cde8839004230840b1cd6' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production'
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
+    <h1>Hello World</h1>
+    <p>I'm hosted with GitHub Pages.</p>
+
+    <!-- Custom div for embedding the chatbot -->
+    <div id="flat-chat"></div>
+
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+                window.voiceflow.chat.load({
+                    verify: {
+                        projectID: '663cde8839004230840b1cd6' // Update your project ID here
+                    },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'production',
+                    render: {
+                        mode: 'embedded',
+                        target: document.getElementById('flat-chat')
+                    },
+                    autostart: false
+                });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; 
+            v.type = "text/javascript"; 
+            s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+    </script>
 </body>
 </html>
