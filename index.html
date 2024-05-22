@@ -46,7 +46,7 @@
                 });
 
                 setTimeout(function() {
-                    const shadowRootHost = document.querySelector('#flat-chat');
+                    const shadowRootHost = document.getElementById('flat-chat');
                     if (shadowRootHost && shadowRootHost.shadowRoot) {
                         const chatInputDiv = shadowRootHost.shadowRoot.querySelector('.vfrc-chat-input');
                         if (chatInputDiv) {
