@@ -45,13 +45,15 @@
                     autostart: true
                 });
 
-                const chatInputDiv = document.querySelector('.vfrc-chat-input');
-                if (chatInputDiv) {
-                    const textarea = chatInputDiv.querySelector('textarea');
-                    if (textarea) {
-                        textarea.placeholder = "Message new...";
+                setTimeout(function() {
+                    const chatInputDiv = document.querySelector('.vfrc-chat-input');
+                    if (chatInputDiv) {
+                        const textarea = chatInputDiv.querySelector('textarea');
+                        if (textarea) {
+                            textarea.placeholder = "Message new...";
+                        }
                     }
-                }
+                }, 1000);
             }
             v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; 
             v.type = "text/javascript"; 
