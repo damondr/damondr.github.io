@@ -2,16 +2,46 @@
 <html>
 <head>
     <title>Embedded Voiceflow Chatbot</title>
-    <style>
+   <style>
         body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
         }
 
         #flat-chat {
             width: 100%;
+            height: 80vh; /* Use viewport height for better responsiveness */
+            max-height: 600px; /* Maximum height for larger screens */
             border: 1px solid #ccc; /* Optional: Adds a border around the chatbot */
             box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+        }
+
+        /* Responsive design adjustments */
+        @media (max-width: 768px) {
+            #flat-chat {
+                height: 70vh; /* Adjust height for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #flat-chat {
+                height: 60vh; /* Adjust height for very small screens */
+            }
+        }
+
+        @media (orientation: landscape) and (max-width: 768px) {
+            #flat-chat {
+                height: 60vh; /* Adjust height for landscape mode on smaller screens */
+            }
+        }
+
+        @media (orientation: landscape) and (max-width: 480px) {
+            #flat-chat {
+                height: 50vh; /* Adjust height for landscape mode on very small screens */
+            }
         }
     </style>
 </head>
