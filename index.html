@@ -46,14 +46,38 @@
                 });
 
                 setTimeout(function() {
-                    const chatInputDiv = document.querySelector('.vfrc-chat-input');
-                    if (chatInputDiv) {
-                        const textarea = chatInputDiv.querySelector('textarea');
-                        if (textarea) {
-                            textarea.placeholder = "Message new...";
+                    const shadowRootHost = document.querySelector('#flat-chat');
+                    if (shadowRootHost && shadowRootHost.shadowRoot) {
+                        const chatInputDiv = shadowRootHost.shadowRoot.querySelector('.vfrc-chat-input');
+                        if (chatInputDiv) {
+                            const textarea = chatInputDiv.querySelector('textarea');
+                            if (textarea) {
+                                textarea.placeholder = "Message...";
+                            }
                         }
+                    } else {
+                        const observer = new MutationObserver((mutations) => {
+                            mutations.forEach((mutation) => {
+                                if (mutation.addedNodes.length > 0) {
+                                    mutation.addedNodes.forEach((node) => {
+                                        if (node.shadowRoot) {
+                                            const chatInputDiv = node.shadowRoot.querySelector('.vfrc-chat-input');
+                                            if (chatInputDiv) {
+                                                const textarea = chatInputDiv.querySelector('textarea');
+                                                if (textarea) {
+                                                    textarea.placeholder = "Message...";
+                                                }
+                                                observer.disconnect();
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+                        });
+
+                        observer.observe(shadowRootHost, { childList: true });
                     }
-                }, 1000);
+                }, 1000); // Adjust the timeout duration as needed
             }
             v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; 
             v.type = "text/javascript"; 
